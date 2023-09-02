@@ -8,13 +8,14 @@
 	<title>APIs using Ajax</title>
 </head>
 <body>
-	<button onclick="get_data()" type = "button" id="load">Load API Data</button><br>
-
+	<!-- <button onclick="get_data()" type = "button" id="load">Load API Data</button><br> -->
+	<button onclick="get_data2()" type = "button" id="load">Load API Data</button><br>
 	<div class="output">
 		
 	</div>
 </body>
 	<script>
+		/*
 		function get_data() 
 		{
 			const ajax = new XMLHttpRequest();
@@ -33,6 +34,25 @@
 			});
 			ajax.open('get', url, true);
 			ajax.send();
+		} */
+
+		// We can use fetch() to perform the above task
+
+		function get_data2()
+		{
+			var output = document.querySelector('.output');
+			output.innerHTML = "Loading...";
+
+			const url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
+			fetch(url).then(function(response) {
+				//console.log(response.text());
+				return response.text();
+			}).then(function(data){
+				output.innerHTML = "<pre>"+data+"</pre>";
+			}).catch(function(err){
+				output.innerHTML = err;
+			});
+			//console.log(output);
 		}
 
 	</script>
