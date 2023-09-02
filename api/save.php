@@ -15,6 +15,8 @@ $post = json_encode($_POST);
 file_put_contents('post.txt', $post);
 
 // 3rd and the most common way to to get data is following
+// Usually, in real world, we will not be using GET or POST request but
+// the above one.
 
 $data = file_get_contents('php://input');
 file_put_contents('data_php.txt', $data);
